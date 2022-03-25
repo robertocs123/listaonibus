@@ -85,7 +85,23 @@ def novalista(request):
 	lista3 = Aluno.objects.all().order_by('data').filter(situacao=Aluno.CARONA,acao=Aluno.IDA)
 	return render(request, 'main.html',{'alerta2':'ok', "cadastrados": lista0,'caronas': lista2, 'cadastradosi':lista1, 'caronasi':lista3})
 	
+def novalista1(request):
+	
+	senha =  request.POST['senha']
+	try:
+		if senha == '@galego321':
+			aux = Aluno.objects.all()
+			aux.delete()
+			return redirect('menu')
 
+	except :
+		return redirect('menu')
+	lista0 = Aluno.objects.all().order_by('data').filter(situacao=Aluno.CADASTRADO, acao=Aluno.VOLTA)
+	lista1 = Aluno.objects.all().order_by('data').filter(situacao=Aluno.CADASTRADO, acao=Aluno.IDA)
+	lista2 = Aluno.objects.all().order_by('data').filter(situacao=Aluno.CARONA,acao=Aluno.VOLTA)
+	lista3 = Aluno.objects.all().order_by('data').filter(situacao=Aluno.CARONA,acao=Aluno.IDA)
+	return render(request, 'main.html',{'alertasenha':'ok', "cadastrados": lista0,'caronas': lista2, 'cadastradosi':lista1, 'caronasi':lista3})
+	
 
 
 def cadastrar(request):

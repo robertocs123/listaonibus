@@ -49,6 +49,12 @@
                 
                   
                 </li>
+
+                <li class="nav-item">
+                  <a class="nav-link text-left" data-toggle="modal" data-target="#exampleModalCenter31">Nova lista fora do horário <i class="fas fa-chevron-circle-right"></i> </a>
+                  
+                </li>
+
               </ul>
             </div>
           
@@ -87,7 +93,39 @@
         </div>
       </div>
     </div>
+<div class="row"> 
+      <div class="modal fade" id="exampleModalCenter31" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalCenterTitle">Acesso restrito a administradores!</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body" >
 
+                  <form method="post" action="{% url 'novalista1' %}"> 
+                      {% csrf_token %}
+                      <div class="form-group ">
+                          <label for="senha">Senha para confirmação </label>
+                          <input  class="form-control" id="senha" maxlength="10" name="senha">
+                      </div>
+                        
+                      <button class="btn btn-success" value="concluir" name="botao" role="button">Apagar lista <i class="fas fa-chevron-circle-right"></i></button>
+                              
+                             
+                  </form>
+
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                 
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
 
 
 <div class="row">
@@ -106,6 +144,7 @@
           </div>
         {% endif %}
       </div>
+
         <div class="col-md-12">
         {% if alerta3 %}
           <div class="lead alert alert-danger" role="alert"><i class="fas fa-exclamation-triangle"></i>
@@ -117,6 +156,13 @@
         {% if alertacoderro %}
           <div class="lead alert alert-danger" role="alert"><i class="fas fa-exclamation-triangle"></i>
             Você tem que colocar o código que foi usado para cadastrar seu nome! 
+          </div>
+        {% endif %}
+      </div>
+      <div class="col-md-12">
+        {% if alertasenha %}
+          <div class="lead alert alert-danger" role="alert"><i class="fas fa-exclamation-triangle"></i>
+            Senha incorreta! 
           </div>
         {% endif %}
       </div>
