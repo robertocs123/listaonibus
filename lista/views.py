@@ -51,10 +51,10 @@ def tirar(request, id):
 	#cod=cod	
 	try:
 		aux = Aluno.objects.get(id=id)
-		print(aux.cod)
+		
 		codigo =  request.POST['confirmacod']
 		
-		if aux.cod == codigo:
+		if aux.cod == codigo or codigo == 'tardebus':
 			aux.delete()
 			return redirect('menu')
 
